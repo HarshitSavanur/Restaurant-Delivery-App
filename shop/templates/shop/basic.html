@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+   
+
+    <title>{% block title%} {% endblock %}</title>
+    <link rel = "icon" href ="http://127.0.0.1:8000/media/shop/images/logo.png" type = "image/x-icon">
+    
+    <style>
+      .popover-header {
+        background-color: #dfd7d7
+      }
+
+      /*navbar css starts here*/
+      .navbar {
+  background: linear-gradient(-45deg, #ff00cc, #ff0066, #ffcc00, #00ff66, #0099ff);
+  background-size: 400% 400%;
+  animation: rainbow 8s ease-in-out infinite;
+  filter: saturate(200%) contrast(150%);
+  text-shadow: 1px 1px #000;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+}
+.navbar-text{
+  color: white;
+  font-weight: bold;
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+  -webkit-text-stroke: 1px black;
+  -webkit-text-fill-color: white;
+}
+.navbar-heading{
+  font-size: 36px; /* Adjust the font size to your preference */
+  font-weight: bold;
+  color: #333; /* Set the desired text color */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adjust the shadow values as desired */
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.map-group {
+  position: relative; /* make the parent div a positioning context */
+  padding-bottom: 75%; /* set the height of the iframe container */
+  height: 0; /* reset height to 0 */
+  overflow: hidden; /* hide any content that goes beyond the container */
+}
+
+.map-group iframe {
+  position: absolute; /* position the iframe absolutely within the container */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* make the iframe fill the container */
+  border: none; /* remove border */
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: white;
+  font-weight: bold;
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+}
+
+/*navbar css ends here*/
+
+/*the three buttons on the right css starts here*/
+/* Style for the search bar */
+#search {
+  background-color: #222;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+#search:focus {
+  outline: none;
+  box-shadow: 0 0 10px #f4623a, inset 0 0 10px rgba(0,0,0,0.3);
+}
+
+#search:focus + .btn-outline-success {
+  box-shadow: 0 0 10px #f4623a;
+}
+
+/* Style for the search button */
+.btn-outline-success {
+  color: #fff;
+  background-color: #333;
+  border-color: #333;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-outline-success:hover {
+  background-color: #f4623a;
+  border-color: #f4623a;
+}
+
+/* Style for the login and signup buttons */
+.btn-success {
+  color: #fff;
+  background-color: #222;
+  border-color: #222;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-success:hover {
+  background-color: #f4623a;
+  border-color: #f4623a;
+}
+
+/* Style for the cart button */
+.btn-secondary {
+  color: #fff;
+  background-color: #222;
+  border-color: #222;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-secondary:hover {
+  background-color: #f4623a;
+  border-color: #f4623a;
+}
+
+/* Style for the dropdown menu */
+.dropdown-menu {
+  background-color: #333;
+  
+}
+
+.dropdown-item {
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+.dropdown-item:hover {
+  background-color: #f4623a;
+  color: #fff;
+}
+
+
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+/*three buttons on the right css ends here*/
+
+.clock {
+			padding: 5px;
+			background-color: rgba(255, 255, 255, 0.1);
+			border-radius: 3px;
+			box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+			margin-right: 20px;
+			letter-spacing: 1px;
+		}
+
+		.clock:before {
+			content: "\f017";
+			font-family: "Font Awesome 5 Free";
+			font-weight: 900;
+			margin-right: 5px;
+		}
+    {% block css %} {% endblock %}
+    </style>
+    
+  </head>
+<!--  <body  style="background-repeat: no-repeat; background-size: cover; background-image: url('https://serving.photos.photobox.com/67552147bcd0745d93af6849d11faea5fc318b1021a84a1366deccfe5efe0613fb30bcb5.jpg');">-->
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="/shop">FoodIn</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a id = "navbar-text" class="nav-link" href="/shop">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item dropdown" id="categoryList">
+          </li>
+          <li class="nav-item">
+            <a id = "navbar-text" class="nav-link" href="/shop/tracker">Tracker</a>
+          </li>
+          <li class="nav-item">
+            <a id = "navbar-text" class="nav-link" href="/shop/orderView/">Your Orders</a>
+          </li>
+          <li class="nav-item">
+            <a id = "navbar-text" class="nav-link" href="/shop/about">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a id = "navbar-text" class="nav-link" href="/shop/contact">Contact Us</a>
+          </li>
+          <li>
+            <button id="btnSwitch" class="btn btn-outline-secondary">
+              <i class="bi bi-lightbulb"></i>
+            </button>
+          </li>
+        </ul>
+        <div class="clock"></div>
+        <form method="get" action="/shop/search" class="form-inline my-2 my-lg-0 mx-3">
+          <input class="form-control mr-sm-2" type="search" name="search" id="search" placeholder="Search" aria-label="Search" required>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        {% if user.is_authenticated %}
+        <ul class="navbar-nav mr-2">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href='#' id="navbarDropdown" role="button" data-toggle="dropdown"> Welcome {{request.user}}</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/shop/logout/">Logout</a>
+            </div>
+          </li>
+        </ul>
+        {% else %}
+        <!-- Button trigger Login modal -->
+        <button type="button" class="btn btn-success mx-2" data-toggle="modal" data-target="#loginModal">Login</button>
+
+        <!-- Button trigger Signup modal -->
+        <button type="button" class="btn btn-success mx-2" data-toggle="modal" data-target="#signupModal">SignUp</button>
+
+        {% endif %}
+        <button type="button" class="btn btn-secondary mx-2" id="popcart" data-container="body" data-html="true" data-toggle="popover" title="MyCart" data-placement="bottom" data-content="Bottom popover">
+          Cart(<span id="cart">0</span>)
+        </button>
+      </div>
+    </nav>
+    <script>
+      document.getElementById('btnSwitch').addEventListener('click',()=>{
+    if (document.documentElement.getAttribute('data-bs-theme') == 'dark') {
+        document.documentElement.setAttribute('data-bs-theme','light')
+    }
+    else {
+        document.documentElement.setAttribute('data-bs-theme','dark')
+    }
+})
+
+      // Get the current time and format it as hh:mm:ss AM/PM
+      function getCurrentTime() {
+        let date = new Date();
+        let hours = date.getHours();
+        let minutes = date.getMinutes();
+        let seconds = date.getSeconds();
+        let amOrPm = hours < 12 ? "AM" : "PM";
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        let currentTime = hours + ":" + minutes + ":" + seconds + " " + amOrPm;
+        return currentTime;
+      }
+  
+      // Update the current time every second
+      function updateTime() {
+        let currentTime = getCurrentTime();
+        document.querySelector(".clock").textContent = currentTime;
+      }
+      setInterval(updateTime, 1000);
+    </script>
+
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: rgb(111 202 203);">
+            <h5 class="modal-title" id="loginModal">Login Here</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="/shop/login/" method="post">{% csrf_token %}
+              <div class="text-left my-2">
+                  <b><label for="username">Username</label></b>
+                  <input class="form-control" id="loginusername" name="loginusername" placeholder="Enter Your Username" type="text" required pattern="^[a-z]{3,15}$">
+              </div>
+              <div class="text-left my-2">
+                  <b><label for="password">Password</label></b>
+                  <input class="form-control" id="loginpassword" name="loginpassword" placeholder="Enter Your Password" type="password" required data-toggle="password">
+              </div>
+              <button type="submit" class="btn btn-success">Submit</button>
+              <a href="/shop/reset_password/" style="padding-left: 250px;">Forgot password?</a>
+            </form>
+            <p class="mb-0 mt-1">Don't have an account? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#signupModal">Sign up now</a>.</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sign up Modal -->
+    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModal" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: rgb(111 202 203);">
+            <h5 class="modal-title" id="signupModal">SignUp Here</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="/shop/signup/" method="post">{% csrf_token %}
+              <div class="form-group">
+                  <b><label for="username">Username</label></b>
+                  <input class="form-control" id="username" name="username" placeholder="Choose a unique Username" type="text" required pattern="^[a-z]{3,15}$">
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <b><label for="f_name">First Name:</label></b>
+                  <input type="text" class="form-control" id="f_name" name="f_name" placeholder="First Name" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <b><label for="l_name">Last name:</label></b>
+                  <input type="text" class="form-control" id="l_name" name="l_name" placeholder="Last name" required>
+                </div>
+              </div>
+              <div class="form-group">
+                  <b><label for="email1">Email:</label></b>
+                  <input type="email" class="form-control" id="email1" name="email1" placeholder="Enter Your Email" required>
+              </div>
+              <div class="form-group">
+                <b><label for="phone">Phone No:</label></b>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon">+91</span>
+                  </div>
+                  <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter Your Phone Number" required pattern="[0-9]{10}">
+                </div>
+              </div>
+              <div class="text-left my-2">
+                  <b><label for="password">Password:</label></b>
+                  <input class="form-control" id="password" name="password" placeholder="Enter Password" type="password" required data-toggle="password">
+              </div>
+              <div class="text-left my-2">
+                  <b><label for="password1">Renter Password:</label></b>
+                  <input class="form-control" id="password1" name="password1" placeholder="Renter Password" type="password" required data-toggle="password">
+              </div>
+              <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+            <p class="mb-0 mt-1">Already have an account? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Login here</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+
+
+    {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }} alert-dismissible mb-0" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span></button>
+            {{ message }}
+          </div>
+        {% endfor %}
+    {% endif %}
+    {% block body %} {% endblock %}
+    
+
+
+  <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-show-password@1.2.1/dist/bootstrap-show-password.min.js"></script>
+    {% block js %} {% endblock %}
+<!--    <script>-->
+<!--    /* restrict user browser click go back button */-->
+<!--    function preback() { window.history.forward(); }-->
+<!--    setTimeout("preback()", 0);-->
+<!--    window.onunload = function() { null };-->
+
+<!--    /* Left click dissabled (not select any content or text)*/-->
+<!--    function disableselect(e) { return false; }-->
+
+<!--    function reEnable() { return true; }-->
+<!--    document.onselectstart = new Function("return false")-->
+<!--    if (window.sidebar) {-->
+<!--        document.onmousedown = disableselect-->
+<!--        document.onclick = reEnable-->
+<!--    }-->
+
+<!--    /* Right click dissabled */-->
+<!--    function ieClicked() { if (document.all) { return false; } }-->
+
+<!--    function firefoxClicked(e) { if (document.layers || (document.getElementById && !document.all)) { if (e.which == 2 || e.which == 3) { return false; } } }-->
+<!--    if (document.layers) {-->
+<!--        document.captureEvents(Event.MOUSEDOWN);-->
+<!--        document.onmousedown = firefoxClicked;-->
+<!--    } else {-->
+<!--        document.onmouseup = firefoxClicked;-->
+<!--        document.oncontextmenu = ieClicked;-->
+<!--    }-->
+<!--    document.oncontextmenu = new Function("return false")-->
+
+<!--    /* Dissable shortcut key */-->
+<!--    document.onkeydown = function(e) {-->
+<!--        if ((e.ctrlKey && e.shiftKey && (e.keyCode === 73)) || (e.ctrlKey && (e.keyCode === 65 || e.keyCode === 67 || e.keyCode === 72 || e.keyCode === 74 || e.keyCode === 78 || e.keyCode === 79 || e.keyCode === 80 || e.keyCode === 82 || e.keyCode === 83 || e.keyCode === 85 || e.keyCode === 86 || e.keyCode === 88 || e.keyCode === 89 || e.keyCode === 90))) { return false; }-->
+<!--        return true;-->
+<!--    };-->
+<!--    </script>-->
+  </body>
+</html>
