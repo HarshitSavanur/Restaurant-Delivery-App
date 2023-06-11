@@ -156,6 +156,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: -200px;
   font-size: 36px;
   font-weight: bold;
   text-transform: uppercase;
@@ -178,7 +179,7 @@
   }
       .container {
         display: flex;
-		margin-top: -200px;
+		margin-top: -300px;
         justify-content: center;
         align-items: center;
         height: 100vh;
@@ -252,45 +253,131 @@
 
 
 
-.slideshow-container {
-  max-width: 50%;
-  position: absolute;
-  top: 180%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+
+
+
+
+
+
+      .feedback-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin-top: -200px;
+      background-size: cover;
+      background-position: center;
+      perspective: 1000px;
+    }
+    .feedback-slide {
+      display: none;
+      width: 100%;
+      max-width: 800px;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      background-color: rgba(255, 255, 255, 0.9);
+      transform: rotateX(-20deg);
+      animation: feedback-slide-in 0.8s ease-in-out;
+    }
+
+    @keyframes feedback-slide-in {
+      0% {
+        transform: rotateX(-90deg) translateY(-100%);
+      }
+      80% {
+        transform: rotateX(8deg) translateY(5%);
+      }
+      100% {
+        transform: rotateX(0deg) translateY(0);
+      }
+    }
+
+    .feedback-question {
+      margin: 0 0 20px;
+      font-size: 32px;
+      color: #333;
+      text-align: center;
+    }
+
+    .feedback-stars {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 40px;
+      font-size: 60px;
+    }
+
+    .feedback-star {
+      cursor: pointer;
+      color: #ccc;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .feedback-star.selected,
+    .feedback-star:hover {
+      color: #ffc107;
+      transform: scale(1.2);
+    }
+
+    .feedback-button {
+      background-color: #ffc107;
+      color: #fff;
+      border: none;
+      padding: 16px 32px;
+      text-align: center;
+      display: block;
+      margin: 0 auto;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      font-size: 24px;
+    }
+
+    .feedback-button:hover {
+      background-color: #ff9800;
+    }
+
+    @media (max-width: 600px) {
+      .feedback-slide {
+        padding: 20px;
+      }
+
+      .feedback-question {
+        font-size: 24px;
+      }
+
+      .feedback-stars {
+        font-size: 40px;
+      }
+
+      .feedback-button {
+        padding: 10px 20px;
+        font-size: 18px;
+      }
+    }
+
+
+
+    .header1 {
+  background: linear-gradient(to right, #7200ff, #ff6f00);
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  margin-top: 0px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  overflow: hidden;
 }
 
-      /* Hide all slides by default */
-      .mySlides {
-        display: none;
-      }
 
-      /* Add animation for slides */
-      .fade {
-        -webkit-animation-name: fade;
-        -webkit-animation-duration: 2s;
-        animation-name: fade;
-        animation-duration: 2s;
-      }
 
-      /* Define the animation for slides */
-      @-webkit-keyframes fade {
-        from {
-          opacity: .4
-        }
-        to {
-          opacity: 1
-        }
-      }
 
-      @keyframes fade {
-        from {
-          opacity: .4
-        }
-        to {
-          opacity: 1
-        }
-      }
+
+
 
 	</style>
 </head>
@@ -376,6 +463,144 @@
 </div>
 
 
+
+
+    <div class="header1">Provide Your Feedback!</div>
+
+
+
+    <div class="feedback-container">
+      <div class="feedback-slide">
+        <h3 class="feedback-question">How did you like our delivery service?</h3>
+        <div id="feedback-stars1" class="feedback-stars"></div>
+        <button class="feedback-button" onclick="nextSlide()">Next</button>
+      </div>
+  
+      <div class="feedback-slide">
+        <h3 class="feedback-question">How was the food quality?</h3>
+        <div id="feedback-stars2" class="feedback-stars"></div>
+        <button class="feedback-button" onclick="nextSlide()">Next</button>
+      </div>
+  
+      <div class="feedback-slide">
+        <h3 class="feedback-question">How satisfied were you with the delivery time?</h3>
+        <div id="feedback-stars3" class="feedback-stars"></div>
+        <button class="feedback-button" onclick="nextSlide()">Next</button>
+      </div>
+  
+      <div class="feedback-slide">
+        <h3 class="feedback-question">How satisfied were you with the packaging of the delivered items?</h3>
+        <div id="feedback-stars4" class="feedback-stars"></div>
+        <button class="feedback-button" onclick="nextSlide()">Next</button>
+      </div>
+  
+      <div class="feedback-slide">
+        <h3 class="feedback-question">How accurate was the order in terms of the items you received?</h3>
+        <div id="feedback-stars5" class="feedback-stars"></div>
+        <button class="feedback-button" onclick="nextSlide()">Next</button>
+      </div>
+  
+      <div class="feedback-slide">
+        <h3 class="feedback-question">How would you rate the freshness of the food?</h3>
+        <div id="feedback-stars6" class="feedback-stars"></div>
+        <button class="feedback-button" onclick="nextSlide()">Next</button>
+      </div>
+  
+      <div class="feedback-slide">
+        <h3 class="feedback-question">How was the taste and flavor of the food?</h3>
+        <div id="feedback-stars7" class="feedback-stars"></div>
+        <button class="feedback-button" onclick="nextSlide()">Next</button>
+      </div>
+  
+      <div class="feedback-slide">
+        <h3 class="feedback-question">How likely are you to recommend our food delivery service to others?</h3>
+        <div id="feedback-stars8" class="feedback-stars"></div>
+        <button class="feedback-button" onclick="nextSlide()">Next</button>
+      </div>
+  
+      <div class="feedback-slide">
+        <h3 class="feedback-question">How responsive and helpful was our customer support?</h3>
+        <div id="feedback-stars9" class="feedback-stars"></div>
+        <button class="feedback-button" onclick="nextSlide()">Next</button>
+      </div>
+  
+      <div class="feedback-slide">
+        <h3 class="feedback-question">How would you rate the value for money of the food items you ordered?</h3>
+        <div id="feedback-stars10" class="feedback-stars"></div>
+        <button class="feedback-button" id="submitBtn" onclick="submitForm()" style="display: none;">Submit</button>
+      </div>
+    </div>
+  
+    <script>
+      let currentSlide = 0;
+  
+      function showSlide(n) {
+        const slides = document.getElementsByClassName('feedback-slide');
+        for (let i = 0; i < slides.length; i++) {
+          slides[i].style.display = 'none';
+        }
+        slides[n].style.display = 'block';
+  
+        if (n === slides.length - 1) {
+          document.getElementById('submitBtn').style.display = 'block';
+        } else {
+          document.getElementById('submitBtn').style.display = 'none';
+        }
+      }
+  
+      function nextSlide() {
+        if (currentSlide < 10) {
+          currentSlide++;
+          showSlide(currentSlide);
+        }
+      }
+  
+      function submitForm() {
+        alert('Your form has been submitted and appreciated!');
+        location.reload();
+      }
+  
+      function createStars(elementId) {
+        const starsContainer = document.getElementById(elementId);
+        for (let i = 1; i <= 5; i++) {
+          const star = document.createElement('span');
+          star.innerHTML = '&#9733;'; // Unicode star symbol
+          star.classList.add('feedback-star');
+          star.setAttribute('data-rating', i);
+          star.onclick = function() {
+            const rating = this.getAttribute('data-rating');
+            highlightStars(elementId, rating);
+          };
+          starsContainer.appendChild(star);
+        }
+      }
+  
+      function highlightStars(elementId, rating) {
+        const stars = document.getElementById(elementId).children;
+        for (let i = 0; i < stars.length; i++) {
+          if (i < rating) {
+            stars[i].classList.add('selected');
+          } else {
+            stars[i].classList.remove('selected');
+          }
+        }
+      }
+  
+      createStars('feedback-stars1');
+      createStars('feedback-stars2');
+      createStars('feedback-stars3');
+      createStars('feedback-stars4');
+      createStars('feedback-stars5');
+      createStars('feedback-stars6');
+      createStars('feedback-stars7');
+      createStars('feedback-stars8');
+      createStars('feedback-stars9');
+      createStars('feedback-stars10');
+  
+      showSlide(currentSlide);
+    </script>
+
+
 <div class="header">Meet The Team Behind This Project</div>
     <div class="container">
       <div class="card">
@@ -413,46 +638,8 @@
     
 
 
-<div class="slideshow-container">
-      <!-- Add the images as slides -->
-      <div class="mySlides fade">
-        <img src="https://media.tenor.com/VIDXTJ4tyjoAAAAC/anime-anime-gif.gif" style="width:100%">
-      </div>
 
-      <div class="mySlides fade">
-        <img src="https://media.tenor.com/TM5MWRlZngwAAAAC/anime-anime-gif.gif" style="width:100%">
-      </div>
 
-      <div class="mySlides fade">
-        <img src="https://media.tenor.com/i_0pmUJ-n40AAAAC/anime-anime-gif.gif" style="width:100%">
-      </div>
-
-      <div class="mySlides fade">
-        <img src="https://media.tenor.com/-jvwjyciJp4AAAAC/food-delicious.gif" style="width:100%">
-      </div>
-    </div>
-
-    <!-- Add the script for the slideshow -->
-    <script>
-      var slideIndex = 0;
-      showSlides();
-
-      function showSlides() {
-        var i;
-        var slides = document.getElementsByClassName("mySlides");
-        for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-        }
-        slideIndex++;
-        if (slideIndex > slides.length) {
-          slideIndex = 1
-        }
-        slides[slideIndex - 1].style.display = "block";
-        setTimeout(showSlides, 2000); // Change image every 2 seconds
-      }
-    </script>
-</body>
-</html>
 
 
 {% endblock %}
