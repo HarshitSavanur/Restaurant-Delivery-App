@@ -2,9 +2,81 @@
 {%load static%}
 {% block branding %}
 
+
+
+
+
+<style>
+  .particles {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: -2;
+		}
+</style>
+
+
+
+
+
+<div class="particles"></div>
+	<script>
+		var canvas = document.createElement("canvas");
+		var ctx = canvas.getContext("2d");
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+		document.querySelector(".particles").appendChild(canvas);
+
+		var particles = [];
+		for (var i = 0; i < 50; i++) {
+			particles.push(new Particle());
+		}
+
+		function Particle() {
+			this.x = Math.random() * canvas.width;
+			this.y = Math.random() * canvas.height;
+			this.radius = Math.random() * 5;
+			this.color = "#fff";
+			this.velocity = {
+				x: (Math.random() - 0.5) * 5,
+				y: (Math.random() - 0.5) * 5
+			}
+		}
+
+		function animate() {
+			requestAnimationFrame(animate);
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+			for (var i = 0; i < particles.length; i++) {
+				ctx.beginPath();
+				ctx.arc(particles[i].x, particles[i].y, particles[i].radius, 0, Math.PI * 2, false);
+				ctx.fillStyle = particles[i].color;
+				ctx.fill();
+
+				particles[i].x += particles[i].velocity.x;
+				particles[i].y += particles[i].velocity.y;
+
+				if (particles[i].x < 0 || particles[i].x > canvas.width) {
+					particles[i].velocity.x = -particles[i].velocity.x;
+				}
+
+				if (particles[i].y < 0 || particles[i].y > canvas.height) {
+					particles[i].velocity.y = -particles[i].velocity.y;
+				}
+			}
+		}
+
+		animate();
+	</script>
+
+
+
+
 <h1 id="head">
-  <a href="http://127.0.0.1:8000/admin"><img src="http://127.0.0.1:8000/media/shop/images/logo.png" width="35" height="35" /></a>
-  The Food Mania
+  <a href="http://127.0.0.1:8000/admin"><img src="https://i.ibb.co/LrrWNJj/logo-new.jpg" width="35" height="35" /></a>
+  FoodIn
 </h1>
 
 {% endblock %}
